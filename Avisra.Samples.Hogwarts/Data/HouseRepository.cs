@@ -6,6 +6,7 @@ using Telerik.Sitefinity.Data;
 using Telerik.Sitefinity.DynamicModules;
 using Telerik.Sitefinity.Libraries.Model;
 using Telerik.Sitefinity.Model;
+using Telerik.Sitefinity.RelatedData;
 
 namespace Avisra.Samples.Hogwarts.Data
 {
@@ -53,7 +54,8 @@ namespace Avisra.Samples.Hogwarts.Data
                     house = houses.FirstOrDefault(h => h.Id == id);
                     if (house != null)
                     {
-                        house.Points = this.manager.GetChildItems(new List<Guid>() { house.Id }, HogwartsConstants.activityType).Select(a => a.GetValue<int>("Points")).Sum();
+                        var activities = this.manager.GetChildItems(new List<Guid>() { house.Id }, HogwartsConstants.activityType).ToList();
+                        house.Points = activities != null && activities.Count > 0 ? activities.Select(a => a.GetValue<int>("Points")).Sum() : 0;
                         HouseCache.Add(house.Id.ToString(), house);
                     }
                     else
@@ -69,7 +71,7 @@ namespace Avisra.Samples.Hogwarts.Data
         {
             using (new ElevatedModeRegion(this.manager))
             {
-                return this.manager.GetDataItems(HogwartsConstants.houseType).Select(h => new House(h) { LogoUrl = h.GetValue<Image>("Logo").MediaUrl });
+                return this.manager.GetDataItems(HogwartsConstants.houseType).Where(h => h.Status == Telerik.Sitefinity.GenericContent.Model.ContentLifecycleStatus.Live).Select(h => new House(h));
             }
         }
     }

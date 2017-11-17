@@ -10,6 +10,8 @@ namespace SitefinityWebApp.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Telerik.Sitefinity.Fluent;
+    using Telerik.Sitefinity;
 
     public static class NinjectWebCommon 
     {
@@ -40,6 +42,7 @@ namespace SitefinityWebApp.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
+            kernel.Load("*.Bindings.dll");
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
@@ -61,6 +64,8 @@ namespace SitefinityWebApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<FluentSitefinity>().ToMethod(p => App.WorkWith());
+            kernel.Bind<Func<HttpContext>>().ToMethod(p => () => HttpContext.Current);
         }        
     }
 }

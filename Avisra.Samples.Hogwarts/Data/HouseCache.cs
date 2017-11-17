@@ -1,13 +1,8 @@
 ﻿using Avisra.Samples.Hogwarts.Data.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Telerik.Microsoft.Practices.EnterpriseLibrary.Caching;
 using Telerik.Sitefinity.Data;
 using Telerik.Sitefinity.Services;
-using Telerik.Sitefinity.Utilities.TypeConverters;
 
 namespace Avisra.Samples.Hogwarts.Data
 {

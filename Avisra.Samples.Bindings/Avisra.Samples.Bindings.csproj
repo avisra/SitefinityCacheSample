@@ -229,15 +229,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="OpenAccessNuGet.targets" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Avisra.Samples.Hogwarts\Avisra.Samples.Hogwarts.csproj">
       <Project>{8a58dfd1-6696-4799-8d74-c53fd043f5a2}</Project>
       <Name>Avisra.Samples.Hogwarts</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="OpenAccessNuGet.targets" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="OpenAccessNuget.targets" />
