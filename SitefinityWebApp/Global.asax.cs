@@ -47,7 +47,7 @@ namespace SitefinityWebApp
 
             config.Routes.MapHttpRoute(
                     name: "DefaultApi",
-                    routeTemplate: "h-api/{controller}/{id}/{action}",
+                    routeTemplate: "api/{controller}/{id}/{action}",
                     defaults: new { id = RouteParameter.Optional, action = RouteParameter.Optional }
                 );
         }

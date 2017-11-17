@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace Avisra.Samples.Hogwarts.Api
 {
-    [RoutePrefix("h-api")]
+    [RoutePrefix("api")]
     public class HouseController : ApiController
     {
         HouseRepository repository;
