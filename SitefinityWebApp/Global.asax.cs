@@ -3,7 +3,6 @@ using System;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Mvc;
-using Telerik.Microsoft.Practices.EnterpriseLibrary.Caching;
 using Telerik.Microsoft.Practices.Unity;
 using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Data;
@@ -33,7 +32,6 @@ namespace SitefinityWebApp
                 if (Bootstrapper.IsDataInitialized)
                 {
                     GlobalConfiguration.Configure(Register);
-                    ObjectFactory.Container.RegisterType<ICacheManager, CacheManager>("Houses");
                 }
             }
         }

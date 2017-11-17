@@ -11,5 +11,7 @@ namespace Avisra.Samples.Hogwarts
     {
         public static readonly Type houseType = TypeResolutionService.ResolveType("Telerik.Sitefinity.DynamicTypes.Model.Howgarts.House");
         public static readonly Type activityType = TypeResolutionService.ResolveType("Telerik.Sitefinity.DynamicTypes.Model.Howgarts.Activity");
+        public static readonly string cacheInstanceName = "Houses";
+        public static readonly string cacheKeysInstanceName = "HouseKeys";
     }
 }

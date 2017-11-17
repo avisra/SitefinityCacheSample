@@ -19,7 +19,7 @@ namespace Avisra.Samples.Hogwarts.Data
 
             lock (housesSync)
             {
-                ICacheManager housesCache = SystemManager.GetCacheManager(cacheInstanceName);
+                ICacheManager housesCache = SystemManager.GetCacheManager(HogwartsConstants.cacheInstanceName);
                 // Add house domain model to cache with all dependencies
                 housesCache.Add(key, value, CacheItemPriority.Normal, null, new ICacheItemExpiration[] { cacheDependency });
             }
@@ -29,7 +29,7 @@ namespace Avisra.Samples.Hogwarts.Data
         {
             lock (housesSync)
             {
-                ICacheManager housesCache = SystemManager.GetCacheManager(cacheInstanceName);
+                ICacheManager housesCache = SystemManager.GetCacheManager(HogwartsConstants.cacheInstanceName);
                 if (housesCache.Contains(key))
                     return housesCache.GetData(key) as House;
             }
@@ -43,8 +43,8 @@ namespace Avisra.Samples.Hogwarts.Data
         {
             lock (housesSync)
             {
-                ICacheManager housesCache = SystemManager.GetCacheManager(cacheInstanceName);
-                housesCache.Add("house_ids", houseIds, CacheItemPriority.Normal, null, new DataItemCacheDependency(HogwartsConstants.houseType, cacheKeysInstanceName));
+                ICacheManager housesCache = SystemManager.GetCacheManager(HogwartsConstants.cacheInstanceName);
+                housesCache.Add("house_ids", houseIds, CacheItemPriority.Normal, null, new DataItemCacheDependency(HogwartsConstants.houseType, HogwartsConstants.cacheKeysInstanceName));
             }
         }
 
@@ -52,7 +52,7 @@ namespace Avisra.Samples.Hogwarts.Data
         {
             lock (housesSync)
             {
-                ICacheManager housesCache = SystemManager.GetCacheManager(cacheInstanceName);
+                ICacheManager housesCache = SystemManager.GetCacheManager(HogwartsConstants.cacheInstanceName);
                 return housesCache.GetData("house_ids") as IEnumerable<string>;
             }
         }
@@ -61,7 +61,7 @@ namespace Avisra.Samples.Hogwarts.Data
         {
             lock (housesSync)
             {
-                ICacheManager housesCache = SystemManager.GetCacheManager(cacheInstanceName);
+                ICacheManager housesCache = SystemManager.GetCacheManager(HogwartsConstants.cacheInstanceName);
                 List<House> allHouses = new List<House>();
                 var keys = housesCache.GetData("house_ids") as IEnumerable<string>;
                 foreach (var key in keys)
@@ -76,7 +76,5 @@ namespace Avisra.Samples.Hogwarts.Data
         #endregion
 
         private static readonly object housesSync = new object();
-        private static readonly string cacheInstanceName = "Houses";
-        private static readonly string cacheKeysInstanceName = "HouseKeys";
     }
 }
