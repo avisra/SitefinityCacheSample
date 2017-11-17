@@ -54,8 +54,8 @@ namespace Avisra.Samples.Hogwarts.Data
                     house = houses.FirstOrDefault(h => h.Id == id);
                     if (house != null)
                     {
-                        var activities = this.manager.GetChildItems(new List<Guid>() { house.Id }, HogwartsConstants.activityType).ToList();
-                        house.Points = activities != null && activities.Count > 0 ? activities.Select(a => a.GetValue<int>("Points")).Sum() : 0;
+                        var activities = this.manager.GetChildItems(new List<Guid>() { house.Id }, HogwartsConstants.activityType).Where(a => a.Status == Telerik.Sitefinity.GenericContent.Model.ContentLifecycleStatus.Live).ToList();
+                        house.Points = activities != null && activities.Count > 0 ? Convert.ToInt32(activities.Select(a => a.GetValue<decimal>("Points")).Sum()) : 0;
                         HouseCache.Add(house.Id.ToString(), house);
                     }
                     else

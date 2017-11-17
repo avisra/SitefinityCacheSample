@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using Ninject.Extensions.Conventions;
 using System;
 using System.Web.Mvc;
 using Telerik.Sitefinity.DynamicModules;
@@ -15,6 +16,7 @@ namespace SitefinityWebApp.DI
         {
             ninjectKernel = FrontendModule.Current.DependencyResolver;
             ninjectKernel.Rebind<DynamicModuleManager>().ToMethod(p => DynamicModuleManager.GetManager());
+            ninjectKernel.Bind(x => x.FromAssemblyContaining(typeof(Avisra.Samples.Hogwarts.HogwartsConstants)).SelectAllClasses().BindAllInterfaces());
         }
 
         protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)

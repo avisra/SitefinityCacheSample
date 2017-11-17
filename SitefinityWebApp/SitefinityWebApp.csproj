@@ -269,6 +269,9 @@
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Extensions.Factory, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Extensions.Factory.3.2.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
     </Reference>
@@ -1187,10 +1190,6 @@
     <Content Include="ResourcePackages\Bootstrap\assets\dist\fonts\bootstrap\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Avisra.Samples.Bindings\Avisra.Samples.Bindings.csproj">
-      <Project>{0f6cbfd5-837f-4f50-ba98-6eeb8441fda8}</Project>
-      <Name>Avisra.Samples.Bindings</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Avisra.Samples.Hogwarts\Avisra.Samples.Hogwarts.csproj">
       <Project>{8a58dfd1-6696-4799-8d74-c53fd043f5a2}</Project>
       <Name>Avisra.Samples.Hogwarts</Name>
