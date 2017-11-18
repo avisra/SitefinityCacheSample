@@ -82,8 +82,6 @@ namespace Avisra.Samples.Hogwarts
             // would be due to do a bug or database connection. We have to do this because IDynamicContentDeletedEvent occurs AFTER it has been deleted from the database. And Sitefinity
             // doesn't have access to the SystemParentId at that point.
 
-            // Here we look at the Master record to verify the record is being deleted
-
             if (eventInfo.Item.Status == Telerik.Sitefinity.GenericContent.Model.ContentLifecycleStatus.Live)
             {
                 if (eventInfo.Item.GetType() == HogwartsConstants.activityType)
